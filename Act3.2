@@ -2,8 +2,26 @@
 #include <math.h>
 
 int main() {
-	int h,j,i;
+	int h, j, i, Op;
 	int A[3][3] = {{1,2,3},{1,2,3},{1,2,3}}, B[3][3] = {{1,2,3},{1,2,3},{1,2,3}}, C[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
+	
+	printf("¿Desea introducir el valor de las matrices?\n1.-Sí\n2.-No");
+	scanf("%I", &Op);
+	
+	if(Op==1) {
+		printf("Por favor introduzca nueve valores para la primer matríz:");
+		for(i=0;i<3;i++) {
+			for(j=0;j<3;j++) {
+				scanf("%i",&A[i][j]);
+			}
+		}
+		printf("Ahora introduzca los valores para la segunda matríz por favor:");
+		for(i=0;i<3;i++) {
+			for(j=0;j<3;j++) {
+				scanf("%i",&B[i][j]);
+			}
+		}
+	}
 	
 	for(h=0;h<3;h++) {
 		for(i=0;i<3;i++) {
@@ -12,7 +30,7 @@ int main() {
 			}
 		}
 	}
-	
+	printf("La matríz resultante es:\n");
 	for(i=0;i<3;i++) {
 		for(j=0;j<3;j++) {
 			printf("%i |", C[i][j]);
