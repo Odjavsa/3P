@@ -1,40 +1,49 @@
 #include <stdio.h>
 #include <math.h>
+#include <locale.h>
+#include <stdlib.h>
 
 int main() {
+	char T;
 	int h, j, i, Op;
 	int A[3][3] = {{1,2,3},{1,2,3},{1,2,3}}, B[3][3] = {{1,2,3},{1,2,3},{1,2,3}}, C[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
+	setlocale(LC_ALL, "spanish");
 	
-	printf("¿Desea introducir el valor de las matrices?\n1.-Sí\n2.-No");
-	scanf("%I", &Op);
-	
-	if(Op==1) {
-		printf("Por favor introduzca nueve valores para la primer matríz:");
-		for(i=0;i<3;i++) {
-			for(j=0;j<3;j++) {
-				scanf("%i",&A[i][j]);
+	do{
+		system("cls");
+		printf("¿Desea introducir el valor de las matrices?\n1.-Sí\n2.-No\n");
+		scanf("%I", &Op);
+		
+		if(Op==1) {
+			printf("Por favor introduzca nueve valores para la primer matríz:\n");
+			for(i=0;i<3;i++) {
+				for(j=0;j<3;j++) {
+					scanf("%i",&A[i][j]);
+				}
+			}
+			printf("Ahora introduzca los valores para la segunda matríz por favor:\n");
+			for(i=0;i<3;i++) {
+				for(j=0;j<3;j++) {
+					scanf("%i",&B[i][j]);
+				}
 			}
 		}
-		printf("Ahora introduzca los valores para la segunda matríz por favor:");
-		for(i=0;i<3;i++) {
-			for(j=0;j<3;j++) {
-				scanf("%i",&B[i][j]);
+		for(h=0;h<3;h++) {
+			for(i=0;i<3;i++) {
+				for(j=0;j<3;j++) {
+					C[h][i] = C[h][i] + (A[h][j] * B[j][i]);
+				}
 			}
 		}
-	}
-	
-	for(h=0;h<3;h++) {
+		printf("La matríz resultante es:\n");
 		for(i=0;i<3;i++) {
 			for(j=0;j<3;j++) {
-				C[h][i] = C[h][i] + (A[h][j] * B[j][i]);
+				printf("%i |", C[i][j]);
 			}
+			printf("\n");
 		}
-	}
-	printf("La matríz resultante es:\n");
-	for(i=0;i<3;i++) {
-		for(j=0;j<3;j++) {
-			printf("%i |", C[i][j]);
-		}
-		printf("\n");
-	}
+		fflush(stdin);
+		printf("Para repetir, presione S por favor\n");
+		scanf("%c",&T);
+	}while(T=='S'||T=='s');
 }
